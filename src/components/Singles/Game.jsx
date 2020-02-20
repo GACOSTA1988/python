@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components/macro';
-import SnakeSegment from './SnakeSegment';
-import Snack from './Snack';
-import SnakeBrain from '../SnakeBrain';
+import SnakeSegment from '../SnakeSegment';
+import Snack from '../Snack';
+
+import SnakeBrain from '../../SnakeBrain';
 
 const squareSize = 25;
 const game = new SnakeBrain(squareSize);
@@ -20,7 +21,7 @@ const Grid = styled.div`
 `;
 
 let snek = game.getSnake();
-export default function Game() {
+export default function DoublesGame() {
     const [snake, setSnake] = useState(snek);
     const [direction, setDirection] = useState('s');
     const [munchy, setMunchy] = useState(game.getMunchy(snek));
@@ -44,8 +45,6 @@ export default function Game() {
     }, [direction]);
 
     useEffect(() => {
-        console.log(`X: ${munchy[0]} ${snake[0][0]}`);
-        console.log(`Y: ${munchy[1]} ${snake[0][1]}`);
         const timer = setInterval(() => {
             const movedSnake = game.moveSnake(snake, direction, munchy);
             setSnake(movedSnake);
@@ -59,9 +58,16 @@ export default function Game() {
     return (
         <Grid>
             {snake.map((body, i) => {
-                return <SnakeSegment row={body[0]} column={body[1]} key={i} />;
+                return (
+                    <SnakeSegment
+                        row={body[0]}
+                        column={body[1]}
+                        color="black"
+                        key={i}
+                    />
+                );
             })}
-            <Snack row={munchy[0]} column={munchy[1]} />
+            <Snack row={munchy[0]} column={munchy[1]} color="red" />
         </Grid>
     );
 }

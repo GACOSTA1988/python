@@ -44,7 +44,7 @@ export default class SnakeBrain {
 
     getMunchy(snake) {
         let needsSpot = true;
-        const spot = [this.randSpot(), this.randSpot()];
+        const spot = [0, 0];
         while (needsSpot) {
             spot[0] = this.randSpot();
             spot[1] = this.randSpot();

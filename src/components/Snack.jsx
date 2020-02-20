@@ -6,7 +6,7 @@ export default function SnakeSegment(props) {
             style={{
                 gridRow: props.row,
                 gridColumn: props.column,
-                backgroundColor: 'red',
+                backgroundColor: props.color,
                 borderRadius: '50%',
             }}
         ></div>
