@@ -43,14 +43,14 @@ export default class SnakeBrain {
     }
 
     getMunchy(snake) {
-        let needsSpot = true;
+        let vibeCheck = false;
         const spot = [0, 0];
-        while (needsSpot) {
+        while (!vibeCheck) {
             spot[0] = this.randSpot();
             spot[1] = this.randSpot();
             for (let i = 0; i < snake.length; i++) {
                 if (snake[i][0] !== spot[0] && snake[i][1] !== spot[1]) {
-                    needsSpot = false;
+                    vibeCheck = true;
                 }
             }
         }
